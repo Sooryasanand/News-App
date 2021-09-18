@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, StyleSheet, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import Header from './components/header/header';
+import WebView from './components/WebViewComponent';
 
 
 export default App = () => {
@@ -26,6 +28,7 @@ useEffect(() => {
 }, []);
 
 
+
   return (
     <View>
       <Header />
@@ -34,33 +37,34 @@ useEffect(() => {
           data={data}
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (
-            <View>
-              <View style={styles.container}>  
-                  <View style={styles.text}>
-                      <Text style={styles.title}>{item.title}</Text>
-                      <Text style={styles.time}>{item.publishedAt}</Text>
-                  </View>
-                  <View style={styles.image}>
-                    <Image style={styles.image} source={{uri: item.urlToImage}}/> 
-                  </View>
-                  <View
-                      style={{
-                          borderBottomColor: 'black',
-                          borderBottomWidth: 1,
-                      }}
-                  />
-              </View>
-              <View
-                  style={{
-                      alignItems: 'center',
-                      borderBottomColor: '#f2f2f2',
-                      width: '80%',
-                      marginTop: 20,
-                      marginLeft: 40,
-                      borderBottomWidth: 1,
-                  }}
-              />
-            </View>
+              <TouchableOpacity>
+                <View style={styles.container}>  
+                    <View style={styles.text}>
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.author}>{item.author}</Text>
+                        <Text style={styles.time}>{item.publishedAt}</Text>
+                    </View>
+                    <View style={styles.image}>
+                      <Image style={styles.image} source={{uri: item.urlToImage}}/> 
+                    </View>
+                    <View
+                        style={{
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                        }}
+                    />
+                </View>
+                <View
+                    style={{
+                        alignItems: 'center',
+                        borderBottomColor: '#f2f2f2',
+                        width: '80%',
+                        marginTop: 20,
+                        marginLeft: 40,
+                        borderBottomWidth: 1
+                    }}
+                />
+              </TouchableOpacity>
           )}
         />
       )}
@@ -91,5 +95,9 @@ const styles = StyleSheet.create({
       width: 140,
       height: 100,
       marginRight: 10
+  },
+  author: {
+    marginTop: 10,
+    fontWeight: 'bold'
   }
 });

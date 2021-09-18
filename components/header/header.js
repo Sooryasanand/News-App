@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     logo: {
         color: 'white',
         fontSize: 25,
+        marginTop: 5
     },
     container: {
         backgroundColor: '#000000',
