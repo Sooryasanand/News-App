@@ -1,2 +1,2 @@
 # News-App
-This is a News Ui App made using React Native
+This is a News App made using React Native and gets the information from an external API called news api
